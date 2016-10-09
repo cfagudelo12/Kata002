@@ -10,11 +10,11 @@ class FunctionalTest(TestCase):
     def tearDown(self):
         self.browser.quit()
 
-    def test_title(self):
+    def test01_title(self):
         self.browser.get('http://localhost:8000')
         self.assertIn('Busco Ayuda', self.browser.title)
 
-    def test_registro(self):
+    def test02_registro(self):
         self.browser.get('http://localhost:8000')
         link = self.browser.find_element_by_id('id_register')
         link.click()
@@ -42,7 +42,7 @@ class FunctionalTest(TestCase):
         span = self.browser.find_element(By.XPATH, '//span[text()="Carlos Felipe Agudelo"]')
         self.assertIn("Carlos Felipe Agudelo", span.text)
 
-    def test_verDetalle(self):
+    def test03_verDetalle(self):
         self.browser.get('http://localhost:8000')
         span=self.browser.find_element(By.XPATH, '//span[text()="Carlos Felipe Agudelo"]')
         span.click()
@@ -50,14 +50,17 @@ class FunctionalTest(TestCase):
         h2=self.browser.find_element(By.XPATH, '//h2[text()="Carlos Felipe Agudelo"]')
         self.assertIn("Carlos Felipe Agudelo",h2.text)
 
-    def test_login(self):
+    def test04_login(self):
         self.browser.get('http://localhost:8000')
-        link = self.browser.find_element_by_id('id_register')
+        link = self.browser.find_element_by_id('id_login')
         link.click()
         self.browser.implicitly_wait(10000)
-        nombreUsuario = self.browser.find_element_by_id('id_username')
+        nombreUsuario = self.browser.find_element_by_id('id_username_login')
         nombreUsuario.send_keys('cf.agudelo12')
-        password = self.browser.find_element_by_id('id_password')
+        password = self.browser.find_element_by_id('id_password_login')
         password.send_keys('clave123')
         botonLogin = self.browser.find_element_by_id('id_but_login')
         botonLogin.click()
+        self.browser.implicitly_wait(10000)
+        bienvenida=self.browser.find_element_by_id('id_bienvenida')
+        self.assertIsNotNone(bienvenida)
