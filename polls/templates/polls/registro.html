@@ -1,3 +1,4 @@
+{% comment %}
 <div class="modal fade" id="register_modal" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -87,10 +88,9 @@
         $('#imagen').click(function () {
             alert($('input[type=file]').val());
             return true;
-
         });
         $('#register_modal').on('hidden.bs.modal', function () {
             validator.resetForm();
         })
     });
-</script>
+</script>{% endcomment %}
