@@ -1,3 +1,4 @@
+{% comment %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +39,6 @@
                 })
             });
         }
-
 
         function agregarComentario(){
             $.post( "/addComment", { texto: $('#comentario').val(), trabajador: trabajador, correo: $('#correo').val() })
@@ -83,4 +83,4 @@
     <div id="comentarios" class="row">
 </div>
 </body>
-</html>
+</html>{% endcomment %}
