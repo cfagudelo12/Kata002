@@ -6,14 +6,11 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.forms import ModelForm
 
-
 class TiposDeServicio(models.Model):
+    def __str__(self):
+        return self.nombre
     nombre = models.CharField(max_length=1000)
     imagen = models.ImageField(upload_to='services')
-
-    def __unicode__(self):
-        return u'{0}'.format(self.nombre)
-
 
 class Trabajador(models.Model):
     nombre = models.CharField(max_length=1000)
@@ -25,12 +22,10 @@ class Trabajador(models.Model):
     imagen = models.ImageField(upload_to='photos')
     usuarioId = models.OneToOneField(User, null=True)
 
-
 class Comentario(models.Model):
     texto = models.CharField(max_length=1000)
     trabajador = models.ForeignKey(Trabajador, null=True)
     correo = models.CharField(max_length=1000)
-
 
 class TrabajadorForm(ModelForm):
     nombre = forms.CharField(
