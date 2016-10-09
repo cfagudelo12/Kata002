@@ -99,12 +99,12 @@
 <script>
     $(document).ready(function () {
         $('#id_login').click(function () {
+            console.log("Entra");
             $('#login_modal').modal();
         });
         $('#id_register').click(function () {
             $('#register_modal').modal();
         });
-
         $('.trabajador').click(function () {
             var trabajador = $(this).data("form");
             localStorage.setItem('trabajador', trabajador);
@@ -113,7 +113,6 @@
         $('.float-message').fadeTo(2000, 500).slideUp(500, function(){
             $('#success-alert').alert('close');
         });
-
         $("#buscar").keyup(function(){
             $('#trabajadores').clear;
             mostrarTrabajadores();
