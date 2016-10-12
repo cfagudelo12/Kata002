@@ -118,6 +118,9 @@ class FunctionalTest(TestCase):
         correo.send_keys('cf.agudelo13@uniandes.edu.co')
         comentario = self.browser.find_element_by_id('comentario')
         comentario.send_keys('Este es un comentario test')
+        butComentar = self.browser.find_element_by_id('id_comentar')
+        butComentar.click()
+        self.browser.implicitly_wait(10000)
         p = self.browser.find_element(By.XPATH, '//p[text()="Este es un comentario test"]')
         self.assertIn('Este es un comentario test',p.text)
 
