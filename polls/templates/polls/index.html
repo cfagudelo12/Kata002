@@ -31,7 +31,7 @@
             <a href="{% url 'principal:editar' idTrabajador=user.id %}" id="id_editar"><span class="glyphicon glyphicon-user"></span> Editar</a>
         </li>
         <li>
-            <a href="logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+            <a href="logout" id="id_logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
         </li>
     {% else %}
         <li><a href="#" id="id_register"><span class="glyphicon glyphicon-user"></span> Registrarse</a></li>
@@ -41,14 +41,14 @@
 <div class="jumbotron" style="padding-left: 20px; height: 50%">
     <h1>Busco Ayuda</h1>
     {% if user.is_authenticated %}
-        <h2 id="id_bienvenida">Bienvenido</h2>
+        <h2 id="id_bienvenida">Bienvenido {{ user.username }}</h2>
     {% endif %}
     <p>Encuentra aquí la ayuda que necesitas.</p>
 </div>
 {% if messages %}
     {% for message in messages %}
         <div class="alert {{ message.tags }} float-message">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <a href="#" class="close" data-dismiss="alert" aria-label="close" id="id_cerrar_mierda">&times;</a>
             {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}<strong>ERROR: </strong> {% endif %}
             {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}<strong>SUCCESS: </strong> {% endif %}
             {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}<strong>INFO: </strong> {% endif %}
